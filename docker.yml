@@ -1,0 +1,52 @@
+---
+- name: install docker
+  hosts: docker
+  become: yes
+
+  tasks:
+          - name: Ensure git package is present 
+            apt:
+                    name: git
+                    state: present
+
+          - name: Ensure docker package is present 
+            apt:
+                    name: docker.io
+                    state: present
+                    #    state: present
+          - name: Install pip
+            apt:
+             name: python-pip
+             update_cache: yes
+             state: present
+
+          - name: Install from pip python modules
+            pip:
+             name:
+               - docker-py
+                 
+          - name: Ensure repo is up-to-date
+            git:
+             repo: https://github.com/3536830/tomcat_webapp.git
+             dest: /tmp/webapp/
+             force: yes
+
+          - name: Ensure docker service is started
+            service:
+                   name: docker
+                   state: started
+
+          - name: Build Docker image from Dockerfile
+            docker_image:
+             name: webapp
+             path: /tmp/webapp/tomcat_webapp/
+             state: build
+
+          - name: Running the container
+            docker_container:
+             name: webaap_tomcat       
+             image: webapp
+             restart: yes
+             state: started
+             ports:
+               - "8880:8080"
