@@ -1,0 +1,38 @@
+---
+mechta:
+  otdel-1:
+    Prof:
+      Buhg:
+        Olga: 4
+      other:
+        Dmitriy: 3
+        Ivan: 2
+    Oplata_truda: 1
+  otdel-2:
+    Prof:
+      Urist:
+        Roman: 4
+      Voditel:
+        Maksim: 2
+    Oplata_truda: 3
+    Age: 30-
+  otdel-3:
+    Prof:
+      Urist:
+        Olga: 1
+      Stroitely:
+        Ivan: 1
+        Nikolay: 1
+    Oplata_truda: 3
+  otdel-4-5:
+    Prof:
+      Work_with_paper:
+        Olga: 5
+    Oplata_truda: 2
+    Age: 30+
+  otdel-6:
+    Prof:
+      SecureDirecotor:
+        IgorViktorovich: 1
+    Oplata_truda: 3
+    Age: 50+
